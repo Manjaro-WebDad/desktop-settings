@@ -9,24 +9,16 @@ set $down j
 set $up k
 set $right l
 
-# directories
-set $share_dir /usr/share/sway
-set $config_dir /etc/sway
-set $user_config_dir $HOME/.config/sway/
-
-set $theme_dir $share_dir/themes
-set $script_dir $share_dir/scripts
-
 # background
 set $background /usr/share/backgrounds/sway/atlas-ark-1970.png
 
 # styles - matcha-green or matcha-blue
-set $theme $theme_dir/matcha-green
+set $theme /usr/share/sway/themes/matcha-green
 
 # Your preferred terminal emulator
 set $term termite --config=$theme/termite
 set $term_float_portrait $term --name=floating_shell_portrait --exec
-set $term_float_landscape $term --name=floating_shell_landscape --exec
+set $term_float $term --name=floating_shell --exec
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -51,15 +43,16 @@ set $idle swayidle -w \
 
 # statusbar command
 set $statusbar waybar
+set $waybar_position top
 
 # shutdown command
 set $shutdown wlogout --buttons-per-row 3
 
 # pulseaudio command
-set $pulseaudio $term_float_landscape pulsemixer
+set $pulseaudio $term_float pulsemixer
 
 # help command
-set $help $term_float_landscape "man $user_config_dir/help.man"
+set $help $term_float "man $HOME/.config/sway/help.man"
 
 # onscreen bar
-set $onscreen_bar bash $script_dir/wob.sh
+set $onscreen_bar bash /usr/share/sway/scripts/wob.sh
